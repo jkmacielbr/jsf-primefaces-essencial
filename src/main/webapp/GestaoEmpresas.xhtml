@@ -21,47 +21,75 @@
 		<h:form>
 			<h:panelGrid columns="2">
 				<h:outputLabel value="Razão social: " for="razaoSocial" />
-				<h:inputText id="razaoSocial" value="#{gestaoEmpresasBean.empresa.razaoSocial}" />
+				<h:inputText id="razaoSocial"
+					value="#{gestaoEmpresasBean.empresa.razaoSocial}" />
 
 				<h:outputLabel value="Nome fantasia: " for="nomeFantasia" />
-				<h:inputText id="nomeFantasia" value="#{gestaoEmpresasBean.empresa.nomeFantasia}" />
-				
+				<h:inputText id="nomeFantasia"
+					value="#{gestaoEmpresasBean.empresa.nomeFantasia}" />
+
 				<h:outputLabel value="Tipo empresa: " for="tipo" />
-				<h:selectOneMenu id="tipo" value="#{gestaoEmpresasBean.empresa.tipo}"> <!-- onde vai ser inserido no bean -->
-					<f:selectItem itemLabel="Selecione..."/>
-					
+				<h:selectOneMenu id="tipo"
+					value="#{gestaoEmpresasBean.empresa.tipo}">
+					<!-- onde vai ser inserido no bean -->
+					<f:selectItem itemLabel="Selecione..." />
+
 					<f:selectItems value="#{gestaoEmpresasBean.tiposEmpresa}"
-					var="tipoEmpresa" itemLabel="#{tipoEmpresa.descricao}" itemValue="#{tipoEmpresa}" />
+						var="tipoEmpresa" itemLabel="#{tipoEmpresa.descricao}"
+						itemValue="#{tipoEmpresa}" />
 				</h:selectOneMenu>
-				
-				<h:outputLabel/>
-				<h:commandButton value="Salvar" actionListener="#{gestaoEmpresasBean.salvar}"/>
-				
-				<h:outputLabel/>
-				<h:commandLink value="Ajuda?" action="#{gestaoEmpresasBean.ajuda}"/>
+
+				<h:outputLabel value="Data fundação: " for="dataFundacao" />
+				<h:panelGroup>
+					<h:inputText id="dataFundacao"
+						value="#{gestaoEmpresasBean.empresa.dataFundacao}"
+						label="Data Fundação">
+
+						<f:convertDateTime pattern="dd/MM/yyyy" />
+					</h:inputText>
+					<h:message for="dataFundacao"></h:message>
+				</h:panelGroup>
+
+				<h:outputLabel value="Faturamento: " for="faturamento" />
+				<h:panelGroup>
+					<h:inputText id="faturamento"
+						value="#{gestaoEmpresasBean.empresa.faturamento}"
+						label="Faturamento">
+						<f:convertNumber pattern="#,##0.00"/>
+
+					</h:inputText>
+					<h:message for="faturamento"></h:message>
+				</h:panelGroup>
+
+				<h:outputLabel />
+				<h:commandButton value="Salvar"
+					actionListener="#{gestaoEmpresasBean.salvar}" />
+
+				<h:outputLabel />
+				<h:commandLink value="Ajuda?" action="#{gestaoEmpresasBean.ajuda}" />
 			</h:panelGrid>
-			
+
 			<h:dataTable value="#{[0,0,0,0]}">
 				<h:column>
 					<f:facet name="header">
-						<h:outputText value="Razão social"/>
+						<h:outputText value="Razão social" />
 					</f:facet>
 					<h:outputText value="AlgaWorks Softwares, Treinamentos LTDA" />
-				</h:column>		
-				
+				</h:column>
+
 				<h:column>
 					<f:facet name="header">
-						<h:outputText value="Nome fantasia"/>
+						<h:outputText value="Nome fantasia" />
 					</f:facet>
 					<h:outputText value="AlgaWorks" />
 				</h:column>
-				
+
 				<h:column>
 					<f:facet name="header">
-						<h:outputText value="Tipo empresa"/>
+						<h:outputText value="Tipo empresa" />
 					</f:facet>
 					<h:outputText value="LTDA" />
-				</h:column>				
+				</h:column>
 			</h:dataTable>
 		</h:form>
 	</div>

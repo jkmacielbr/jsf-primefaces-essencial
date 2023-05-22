@@ -21,14 +21,16 @@
 			<h:form>
 				<p:toolbar>
 					<f:facet name="left">
-						<p:inputText placeholder="Digite um tempo para pesquisa..." size="30" />
+						<p:inputText placeholder="Digite um tempo para pesquisa..."
+							size="30" />
 						<p:commandButton value="Pesquisar" icon="fa fa fa-search" />
 
 						<span class="ui-separator"> <span
 							class="ui-icon ui-icon-grip-dotted-vertical" />
 						</span>
 
-						<p:commandButton value="Nova" icon="fa fa-plus" />
+						<p:commandButton value="Nova" icon="fa fa-plus"
+							onclick="PF('empresaDialoggetVar').show()"/>
 
 						<span class="ui-separator"> <span
 							class="ui-icon ui-icon-grip-dotted-vertical" />
@@ -38,7 +40,7 @@
 						<span class="ui-separator"> <span
 							class="ui-icon ui-icon-grip-dotted-vertical" />
 						</span>
-						
+
 						<p:commandButton value="Excluir" icon="fa fa-trash" />
 						<span class="ui-separator"> <span
 							class="ui-icon ui-icon-grip-dotted-vertical" />
@@ -50,8 +52,8 @@
 						</span>
 					</f:facet>
 				</p:toolbar>
-				<p:spacer height="10px"/>
-				
+				<p:spacer height="10px" />
+
 				<p:dataTable value="#{gestaoEmpresasBean.listaEmpresas}"
 					var="empresa" emptyMessage="Nenhuma informação a ser exibida"
 					paginator="true" rows="10" paginatorPosition="bottom">
@@ -71,7 +73,14 @@
 						<h:outputText value="#{empresa.ramoAtividade.descricao}" />
 					</p:column>
 				</p:dataTable>
+				
+				<p:dialog header="Nova Empresa" widgetVar="empresaDialoggetVar"
+				modal="true" resizable="false" closeOnEscape="true">
+					<p:commandButton value="Teste" />
+				</p:dialog>
+
 			</h:form>
+
 
 		</div>
 
